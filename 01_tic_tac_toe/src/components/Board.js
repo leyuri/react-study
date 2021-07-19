@@ -3,17 +3,25 @@ import Square from './Square';
 
 class Board extends React.Component {
     render() {
+        const status = "Next player: X"
         return (
             <div>
-                <Square />
-                <Square />
-                <Square />
-                <Square />
-                <Square />
-                <Square />
-                <Square />
-                <Square />
-                <Square />
+                <div className="status">{status}</div>
+                <div>
+                    <Square />
+                    <Square />
+                    <Square />
+                </div>
+                <div>
+                    <Square />
+                    <Square />
+                    <Square />
+                </div>
+                <div>
+                    <Square />
+                    <Square />
+                    <Square />
+                </div>
             </div>
         )
     }
