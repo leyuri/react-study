@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Square from './Square';
 
-class Board extends React.Component {
+class Board extends Component {
     renderRow(rowNum) {
         return (
             <div>
+                <Square value={rowNum * 3 + 0} />
                 <Square value={rowNum * 3 + 1} />
                 <Square value={rowNum * 3 + 2} />
-                <Square value={rowNum * 3 + 3} />
             </div>
         )
     }
