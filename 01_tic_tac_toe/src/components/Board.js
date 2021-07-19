@@ -2,12 +2,12 @@ import React from 'react';
 import Square from './Square';
 
 class Board extends React.Component {
-    renderRow() {
+    renderRow(rowNum) {
         return (
             <div>
-                <Square value="1" />
-                <Square value="2" />
-                <Square value="3" />
+                <Square value={rowNum * 3 + 1} />
+                <Square value={rowNum * 3 + 2} />
+                <Square value={rowNum * 3 + 3} />
             </div>
         )
     }
@@ -16,9 +16,9 @@ class Board extends React.Component {
         return (
             <div>
                 <div className="status">{status}</div>
-                {this.renderRow()}
-                {this.renderRow()}
-                {this.renderRow()}
+                {this.renderRow(0)}
+                {this.renderRow(1)}
+                {this.renderRow(2)}
             </div>
         )
     }
