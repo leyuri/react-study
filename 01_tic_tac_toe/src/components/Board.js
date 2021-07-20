@@ -59,8 +59,8 @@ class Board extends Component {
             [2, 4, 6],
         ];
 
-        for (let i = 0; i < lines.length; i++) {
-            const [a, b, c] = lines[i];
+        for(const [a, b, c] of lines) {
+            console.log("const [a, b, c]", [a, b, c]);
             if (squares[a] && squares[a] === squares[b] && squares[b] === squares[c]) { // squares[a] null이 아니여야 함
                 return squares[a]; // 그 자리에 있는 게 이겼다는 의미 
             }
