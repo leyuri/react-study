@@ -11,14 +11,18 @@ class Board extends Component {
         };
     }
 
-    handleClick(no) {
-        // console.log(no);
-        const arr = this.state.squares.slice();
-        arr[no] = this.state.xIsNext ? "X" : "O";
+    handleClick(i) {
+        const { squares, xIsNext } = this.state;
+        const arr = squares.slice();
+        console.log("arr[i]", arr[i]);
+        if (arr[i] !== null) { // arr[i]
+            return
+        }
+        arr[i] = this.state.xIsNext ? "X" : "O";
         console.log("arr", arr);
         this.setState({
             squares : arr,
-            xIsNext : !this.state.xIsNext
+            xIsNext : !xIsNext
         })
     }
 
