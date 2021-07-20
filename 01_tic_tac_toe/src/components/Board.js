@@ -14,8 +14,7 @@ class Board extends Component {
     handleClick(i) {
         const { squares, xIsNext } = this.state;
         const arr = squares.slice();
-        console.log("arr[i]", arr[i]);
-        if (arr[i] !== null) { // arr[i]
+        if (arr[i] !== null || this.calculateWinner(squares)) { // arr[i]
             return
         }
         arr[i] = this.state.xIsNext ? "X" : "O";
