@@ -1,17 +1,16 @@
-import React  from 'react';
+import React from 'react';
 
-function Square({value, onClick}) {
+function Square({ value, onClick }) {
     // console.log("{value}", value);
     return (
         <button
             className="square"
-            onClick={() => {
-                onClick();
-            }}
+            onClick={onClick}
+            // this 가 없으므로 이렇게 호출해도 무방
         >{value}
         </button>
     )
-    
+
 }
 
 export default Square;
