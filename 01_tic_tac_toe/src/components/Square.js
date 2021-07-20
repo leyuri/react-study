@@ -9,12 +9,17 @@ class Square extends Component {
             value: null
         };
     }
+
+    onClick() {
+        this.setState({value: "X"});
+    }
+
     render() { //jsx
         const { value } = this.state;
         return (
             <button
                 className="square"
-                onClick={() => { this.setState({ value: 'X' }) }}>{value}
+                onClick={() => { this.onClick() }}>{value}
             </button>
         );
     }
