@@ -6,19 +6,25 @@ class Board extends Component {
         super(props);
 
         this.state = {
-            squares: Array(9).fill(0)
+            squares: Array(9).fill(null)
         };
     }
 
     handleClick(no) {
-        console.log(no);
+        // console.log(no);
+        const arr = this.state.squares.slice();
+        arr[no] = "X";
+        console.log("arr", arr);
+        this.setState({
+            squares : arr
+        })
     }
 
     renderSquare(no) {
         return (
             <Square 
                 value={this.state.squares[no]} 
-                onClick={(no) => {
+                onClick={() => {
                     this.handleClick(no);
                 }}
             />

@@ -8,7 +8,7 @@ class Square extends Component {
             <button
                 className="square"
                 onClick={() => {
-                    this.props.onClick(value);
+                    this.props.onClick();
                 }}
             >{value}
             </button>
