@@ -5,11 +5,10 @@ function Square({ value, onClick }) {
         <button
             className="square"
             onClick={onClick}
-            // this 가 없으므로 이렇게 호출해도 무방
+        // this 가 없으므로 이렇게 호출해도 무방
         >{value}
         </button>
     )
-
 }
 
 export default Square;

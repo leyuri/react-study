@@ -6,19 +6,17 @@ class Board extends Component {
         return (
             <Square
                 value={this.props.squares[i]}
-                onClick={() => {
-                    this.handleClick(i);
-                }}
+                onClick={() => { this.props.onClick(i) }}
             />
         )
     }
 
-    renderRow(rowNum) {
+    renderRow(no) {
         return (
             <div className="row">
-                {this.renderSquare(rowNum * 3 + 0)}
-                {this.renderSquare(rowNum * 3 + 1)}
-                {this.renderSquare(rowNum * 3 + 2)}
+                {this.renderSquare(no * 3 + 0)}
+                {this.renderSquare(no * 3 + 1)}
+                {this.renderSquare(no * 3 + 2)}
             </div>
         )
     }
