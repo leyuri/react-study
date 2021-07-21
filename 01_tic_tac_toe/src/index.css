@@ -34,7 +34,7 @@ button:focus {outline:0;}
 
 .game {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .row {

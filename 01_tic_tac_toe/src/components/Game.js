@@ -92,6 +92,12 @@ class Game extends Component {
                 <div className="game-info">
                     <div>{status}</div>
                     <ol>{this.getMoves()}</ol>
+                    <button onClick={() => {
+                        this.setState({
+                            step: this.state.step - 1,
+                            history : this.state.history.slice(0, this.state.step)
+                        });
+                    }}>undo</button>
                 </div>
             </div>
         )
