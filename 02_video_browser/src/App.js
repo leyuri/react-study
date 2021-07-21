@@ -4,6 +4,7 @@ import * as youtubeSearch from 'youtube-search';
 
 import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
+import VideoDetail from './components/video_detail';
 
 const GOOGLE_KEY = "AIzaSyC8ew0DgXP36CquBiAw75B7hWRsfvRxhDs"
 
@@ -33,11 +34,13 @@ class App extends React.Component {
   };
 
   render() {
+    // console.log("selectedVideo", this.state.selectedVideo);
     return (
       <div className="App container mt-3" >
         <SearchBar />
-        <div className="row">
+        <div className="row mt-3">
           <div className="col-8">
+            <VideoDetail selectedVideo={this.state.selectedVideo}/>
           </div>
           <div className="col-4">
           <VideoList videos={this.state.videos}/>
