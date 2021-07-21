@@ -8,6 +8,7 @@ class Game extends Component {
             history: [{
                 squares: Array(9).fill(null),
             }],
+            step: 0,
             xIsNext: true,
         };
     }
@@ -32,8 +33,8 @@ class Game extends Component {
     }
 
     handleClick(i) {
-        const { history, xIsNext } = this.state;
-        const current = history[history.length - 1];
+        const { history, xIsNext, step } = this.state;
+        const current = history[step];
         const squares = current.squares.slice(); // copy
         if (squares[i] !== null || this.calculateWinner(squares)) { // arr[i]
             return
@@ -41,13 +42,38 @@ class Game extends Component {
         squares[i] = xIsNext ? "X" : "O";
         this.setState({
             history: history.concat([{ squares: squares }]),
+            step: step + 1,
             xIsNext: !xIsNext
+        })
+    }
+
+    goto(idx) {
+        this.setState({
+            // history: this.state.history,
+            step: idx,
+            xIsNext: (idx % 2 === 0) ? "X": "O"
+        })
+    }
+
+    getMoves() {
+        return this.state.history.map((step, idx) => {
+            const desc = idx ? `Go to move #${idx}` : "Start to game!"
+            return (
+                <li>
+                    <button onClick={
+                        () => {this.getSnapshotBeforeUpdate(idx);}
+                    }>
+                        {desc}
+                    </button>
+                </li>
+
+            )
         })
     }
 
     render() {
         const { history, xIsNext } = this.state;
-        const squares = history[history.length - 1].squares;
+        const squares = history[this.state.step].squares;
         const winner = this.calculateWinner(squares);
         let status; // status 값은 변경 가능해야 하므로 let keyword 사용
         if (winner) { // winner가 있으면    
@@ -57,6 +83,7 @@ class Game extends Component {
         }
         return (
             <div className="game">
+
                 <div className="game-board">
                     <Board
                         squares={squares}
@@ -65,7 +92,7 @@ class Game extends Component {
                 </div>
                 <div className="game-info">
                     <div>{status}</div>
-                    <ol></ol>
+                    <ol>{this.getMoves()}</ol>
                 </div>
             </div>
         )
