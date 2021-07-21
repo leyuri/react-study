@@ -60,7 +60,7 @@ class Game extends Component {
         return this.state.history.map((step, idx) => {
             const desc = idx ? `Go to move #${idx}` : "Start to game!"
             return (
-                <li>
+                <li key={idx}>
                     <button onClick={
                         () => {this.goto(idx);}
                     }>{desc}</button>
