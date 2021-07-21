@@ -2,7 +2,8 @@ import React from 'react'
 import './App.css';
 import * as youtubeSearch from 'youtube-search';
 
-import SearchBar from './components/search_bar'
+import SearchBar from './components/search_bar';
+import ViedoItem from './components/video_item';
 
 const GOOGLE_KEY = "AIzaSyC8ew0DgXP36CquBiAw75B7hWRsfvRxhDs"
 
@@ -39,6 +40,7 @@ class App extends React.Component {
           <div className="col-8">
           </div>
           <div className="col-4">
+          <ViedoItem />
           </div>
         </div>
       </div>
