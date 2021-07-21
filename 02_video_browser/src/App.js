@@ -1,30 +1,35 @@
 import React from 'react'
 import './App.css';
-import * as search from 'youtube-search';
+import * as youtubeSearch from 'youtube-search';
 
 import SearchBar from './components/search_bar'
 
+const GOOGLE_KEY = "AIzaSyC8ew0DgXP36CquBiAw75B7hWRsfvRxhDs"
+
 class App extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
       video: [],
       selectedVideo: null
-    };
-    var opts = {
-      maxResults: 20,
-      key: 'AIzaSyC8ew0DgXP36CquBiAw75B7hWRsfvRxhDs'
-    };
+    }
+  }
 
-    search('떡볶이', opts, (err, results) => {
+  componentDidMount() {
+    this.search();
+  }
+
+  search () {
+    youtubeSearch('BLACKPINK', { maxResults: 20, key: GOOGLE_KEY }, (err, results) => {
       if (err) return console.log(err);
+      console.log("results", results);
       this.setState({
         video: results,
         selectedVideo: results[0]
       })
-      console.dir(results);
     });
-  }
+  };
 
   render() {
     return (
