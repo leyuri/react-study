@@ -1,17 +1,11 @@
-import React, { Component } from 'react';
-import ViedoItem from './video_item';
+import React from 'react';
+import VideoItem from './video_item';
 
-class VideoList extends Component {
-
-    render() {
-        return (
-            <div className="videoList">
-                {this.props.videos.map(item => (
-                    <ViedoItem key={item.id} videos={item} />
-                ))}
-            </div>
-
-        )
-    }
+export default function VideoList({ videos, onItemSelect }) {
+    return (
+        <div className="videoList"> {
+            videos.map(item => (
+                <VideoItem key={item.id} video={item} onItemSelect={onItemSelect} />
+            ))}
+        </div>);
 }
-export default VideoList;

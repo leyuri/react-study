@@ -8,7 +8,7 @@ import VideoDetail from './components/video_detail';
 
 const GOOGLE_KEY = "AIzaSyDxKteihYMZNzqoo6NfclPMO6Lk0u-M4NI"
 
-class App extends React.Component {
+export default class App extends React.Component {
 
   constructor(props) {
     super(props);
@@ -24,8 +24,8 @@ class App extends React.Component {
   }
 
   search(term) {
-    this.setState({term : this.state.term});
-    youtubeSearch(this.state.term, {maxResults: 10, key: GOOGLE_KEY }, (err, results) => {
+    this.setState({ term: this.state.term });
+    youtubeSearch(term, { maxResults: 10, key: GOOGLE_KEY }, (err, results) => {
       if (err) return console.log(err);
       console.log("results", results);
       this.setState({
@@ -36,27 +36,18 @@ class App extends React.Component {
   };
 
   render() {
-    // console.log("selectedVideo", this.state.selectedVideo);
     return (
       <div className="App container mt-3" >
-        <SearchBar term={this.state.term} onChange={(term) => (this.search(term))}/>
-        <div className="row mt-3">
-          <div className="col-8">
-            <VideoDetail selectedVideo={this.state.selectedVideo}/>
-          </div>
+        <SearchBar term={this.state.term} onChange={(term) => (this.search(term))} />
+        <div className="row mt-3"> <div className="col-8">
+          <VideoDetail video={this.state.selectedVideo} /> </div>
           <div className="col-4">
-          <VideoList videos={this.state.videos}
-            onItemSelect={(video) => {
-              this.setState({
-                selectedVideo: video
-              })
-            }}
-          />
-          </div>
+            <VideoList videos={this.state.videos}
+              onItemSelect={(video) => {
+                this.setState({ selectedVideo: video });
+              }} /> </div>
         </div>
       </div>
     );
   }
 }
-
-export default App;

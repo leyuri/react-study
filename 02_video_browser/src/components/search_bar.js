@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 
-class SearchBar extends Component {
+export default class SearchBar extends Component {
 
     constructor(props) {
-        super(props); this.state = {
+        super(props);
+        this.state = {
             term: this.props.term
         }
     }
-
+    change(term) {
+        this.setState({ term });
+        // setState 때문에 value가 바뀌고 다시 화면 update가 일어남 
+    }
     render() {
         console.log("props", this.state.term)
         return (
@@ -18,13 +22,16 @@ class SearchBar extends Component {
                         type="search"
                         placeholder="Search"
                         value={this.state.term}
+                        onChange={(e) => {
+                            this.change(e.target.value);
+                        }}
                     />
-                    <button className="btn btn-outline-success" type="submit">Search</button>
+                    <button className="btn btn-outline-success" type="button" onClick={() => {
+                        this.props.onChange(this.state.term);
+                    }}>Search</button>
                 </form>
             </div>
 
         )
     }
 }
-
-export default SearchBar;
