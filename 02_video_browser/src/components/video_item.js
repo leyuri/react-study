@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default function ViedoItem({ video }) {
+export default function ViedoItem({ video, onItemSelect }) {
 
     return (
-        <div className="video-item">
+        <div className="video-item" onClick={() => {
+            onItemSelect(video);
+        }}>
             <div className="row">
                 <div className="col mr-0">
                     <img src={video.thumbnails.default.url} alt={video.title} />
