@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function VideoDetail({ selectedVideo }) {
-    // console.log("video", selectedVideo);
     if (!selectedVideo) {
         return (
             <div className="text-center">
