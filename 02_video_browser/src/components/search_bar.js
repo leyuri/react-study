@@ -18,7 +18,7 @@ export default class SearchBar extends Component {
             <div className="pr-3 pl-1">
                 <form className="d-flex">
                     <input
-                        className="form-control me-2"
+                        className="form-control me-2 shadow-none"
                         type="search"
                         placeholder="Search"
                         value={this.state.term}

@@ -2,12 +2,6 @@ import React from 'react';
 import VideoItem from './video_item';
 
 export default function VideoList({ videos, onItemSelect }) {
-
-    // constructor(props) {
-    //     super(props);
-    //     this.props.onItemSelect;
-    // }
-
     return (
         <div className="videoList"> {
             videos.map(item => (
