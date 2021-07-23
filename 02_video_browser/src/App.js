@@ -1,12 +1,14 @@
 import React from 'react'
 import './App.css';
 import * as youtubeSearch from 'youtube-search';
-
 import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
 import VideoDetail from './components/video_detail';
 
-const GOOGLE_KEY = "AIzaSyDxKteihYMZNzqoo6NfclPMO6Lk0u-M4NI"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Col, Row } from 'react-bootstrap';
+
+const GOOGLE_KEY = "AIzaSyCKce_FwWQ5nWPTFU6tgiZ0ZhlOTppEdDA"
 
 export default class App extends React.Component {
 
@@ -25,7 +27,7 @@ export default class App extends React.Component {
 
   search(term) {
     this.setState({ term: this.state.term });
-    youtubeSearch(term, { maxResults: 10, key: GOOGLE_KEY }, (err, results) => {
+    youtubeSearch(term, { maxResults: 1, key: GOOGLE_KEY }, (err, results) => {
       if (err) return console.log(err);
       console.log("results", results);
       this.setState({
@@ -37,16 +39,21 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div className="App container mt-3" >
-        <SearchBar term={this.state.term} onChange={(term) => (this.search(term))} />
-        <div className="row mt-3"> <div className="col-8">
-          <VideoDetail video={this.state.selectedVideo} /> </div>
-          <div className="col-4">
-            <VideoList videos={this.state.videos}
+      <div>
+        <SearchBar term={this.state.term} onChange={(term) => {this.search(term);}}/>
+        <Container>
+          <Row className="mt-4">
+            <Col xs={12} md={8}>
+            <VideoDetail video={this.state.selectedVideo} />
+            </Col>
+            <Col xs={6} md={4}>
+              <VideoList videos={this.state.videos}
               onItemSelect={(video) => {
                 this.setState({ selectedVideo: video });
-              }} /> </div>
-        </div>
+              }} />
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }

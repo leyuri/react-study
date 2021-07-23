@@ -1,4 +1,5 @@
 import React from 'react'
+import { Col, Row, Image } from 'react-bootstrap';
 
 export default function ViedoItem({ video, onItemSelect }) {
 
@@ -6,13 +7,27 @@ export default function ViedoItem({ video, onItemSelect }) {
         <div className="video-item" onClick={() => {
             onItemSelect(video);
         }}>
-            <div className="row">
-                <div className="col mr-0">
-                    <img src={video.thumbnails.default.url} alt={video.title} />
-                </div>
-                <div className="col pl-0" style={{ fontSize: '11px' }}>
-                    {video.title} </div>
-            </div>
+            <Row className="mb-2">
+                <Col>
+                    <Image 
+                        src={video.thumbnails.default.url} 
+                        alt={video.title} 
+                        width="196"
+                        height="120"
+                    />
+                </Col>
+                <Col >
+                    <Row style={{ fontSize: '15px' , fontWeight: 'bold'}}>
+                    {video.title}
+                    </Row>
+                    <Row style={{ fontSize: '13px' }}> 
+                    {video.channelTitle}
+                    </Row>
+                    <Row style={{ fontSize: '13px' }}> 
+                    {video.publishedAt}
+                    </Row>
+                </Col>
+            </Row>
         </div>
     )
 }
