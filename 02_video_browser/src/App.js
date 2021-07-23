@@ -37,20 +37,33 @@ export default class App extends React.Component {
     });
   };
 
+  regExp(str) {
+    var reg = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi
+    //특수 문자 검증
+    if (reg.test(str)) {
+      //특수 문자 제거후 리턴
+      return str.replace(reg, "");
+    } else {
+      //특수 문자가 없으므로 본래 문자 리턴
+      return str;
+    }
+  }
+
   render() {
     return (
       <div>
-        <SearchBar term={this.state.term} onChange={(term) => {this.search(term);}}/>
+        <SearchBar term={this.state.term} onChange={(term) => { this.search(term); }} />
         <Container>
           <Row className="mt-4">
             <Col xs={12} md={8}>
-            <VideoDetail video={this.state.selectedVideo} />
+              <VideoDetail video={this.state.selectedVideo} checkRegExp={this.regExp}/>
             </Col>
             <Col xs={6} md={4}>
               <VideoList videos={this.state.videos}
-              onItemSelect={(video) => {
-                this.setState({ selectedVideo: video });
-              }} />
+                onItemSelect={(video) => {
+                  this.setState({ selectedVideo: video });
+                }} 
+                checkRegExp={this.regExp}/>
             </Col>
           </Row>
         </Container>

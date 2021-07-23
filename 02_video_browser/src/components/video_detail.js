@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row } from 'react-bootstrap';
 
-export default function VideoDetail({ video }) {
+export default function VideoDetail({ video, checkRegExp }) {
     if (!video) {
         return (
             <div className="text-center">
@@ -23,7 +23,7 @@ export default function VideoDetail({ video }) {
                 </iframe>
             </Row>
             <Row className="mt-3">
-            {video.title}
+            {checkRegExp(video.title)}
             </Row>
             <Row>
             {video.publishedAt}
