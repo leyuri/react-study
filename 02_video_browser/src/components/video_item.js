@@ -3,6 +3,7 @@ import { Col, Row, Image } from 'react-bootstrap';
 
 export default function ViedoItem({ video, onItemSelect, checkRegExp}) {
 
+
     return (
         <div className="video-item" onClick={() => {
             onItemSelect(video);

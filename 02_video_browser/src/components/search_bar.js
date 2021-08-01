@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
-import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
+import { Navbar, NavDropdown, Nav, Image} from 'react-bootstrap';
 import { Form, FormControl, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
@@ -26,16 +26,8 @@ export default class SearchBar extends Component {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#features">Features</Nav.Link>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
-              <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-              </NavDropdown>
             </Nav>
+            {/* <Form.Control type="text" placeholder="Normal text" /> */}
             <Form className="d-flex">
               <FormControl
                 type="search"
@@ -58,10 +50,11 @@ export default class SearchBar extends Component {
               <Nav.Link eventKey={2} href="#memes">
                 Dank memes
               </Nav.Link>
+              <Image className="mt-1" src="/images/user.png" roundedCircle height="32" width="30" />
             </Nav>
           </Navbar.Collapse>
         </Container>
-        
+
       </Navbar>
     )
   }
