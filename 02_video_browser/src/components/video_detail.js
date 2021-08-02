@@ -25,22 +25,48 @@ export default function VideoDetail({ video, checkRegExp }) {
             <Row className="mt-3 ml-3" style={{ fontSize: '20px', fontWeight: 'bold', marginLeft: '0px' }}>
                 {checkRegExp(video.title)}
             </Row>
-            <Row style={{ marginLeft: '0px' }}>
+            <Row className="text-muted" style={{ marginLeft: '0px', fontWeight : 'bold' }}>
                 {video.publishedAt}
             </Row>
             <hr></hr>
-            <Row>
-                <Col md={11}>
-                    <Image src="/images/user.png" roundedCircle height="50" width="45" />&nbsp;&nbsp;
-                    {video.channelTitle}
+
+            {/* channel Info & subscribe btn  */}
+            <div style={{ float: 'left' }}>
+                <Image src="/images/gitlab.png" roundedCircle height="50" width="45" />
+                <span style={{ marginLeft : '18px', fontWeight : 'bold' }}>{video.channelTitle}</span>
+            </div>
+            <div style={{ float: 'right' }}><Button className="mt-1 " variant="danger">&nbsp;&nbsp;구독&nbsp;&nbsp;</Button></div>
+            
+            <br>
+            </br>
+            <br>
+            </br>
+            
+            <hr></hr>
+            {/* comments */}
+            <Row className="mb-4">
+                <Col xs={1}>
+                    <Image src="/images/user.png" roundedCircle height="50" width="45" />
                 </Col>
-                <Col md={1} style={{ paddingleft: '0px' }}>
-                    <Button className="mt-1 " variant="danger">구독</Button>
+
+                <Col xs={11}>
+                    <Row style={{ fontWeight : 'bold' }}>javascriptlover</Row>
+                    <Row>GitLab is a great tool for code review :) ✌ </Row>
                 </Col>
             </Row>
-           
-            <hr></hr>
-            <Image src="/images/user.png" roundedCircle height="50" width="45" />
+
+            <Row>
+                <Col xs={1}>
+                    <Image src="/images/Java.jpg" roundedCircle height="50" width="45" />
+                </Col>
+
+                <Col xs={11}>
+                    <Row style={{ fontWeight : 'bold' }}>javalover</Row>
+                    <Row>I love java 💕💕 </Row>
+                </Col>
+            </Row>
         </div>
     )
 }
+
+
