@@ -27,7 +27,7 @@ export default class App extends React.Component {
 
   search(term) {
     this.setState({ term: this.state.term });
-    youtubeSearch(term, { maxResults: 1, key: GOOGLE_KEY }, (err, results) => {
+    youtubeSearch(term, { maxResults: 7, key: GOOGLE_KEY }, (err, results) => {
       if (err) return console.log(err);
       console.log("results", results);
       this.setState({
